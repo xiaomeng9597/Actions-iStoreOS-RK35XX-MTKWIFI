@@ -263,7 +263,7 @@ PKG_CONFIG_DEPENDS:=$(foreach c, $(PKG_KCONFIG),$(if $(CONFIG_MTK_$c),CONFIG_$(c
 # ===================== 全局屏蔽 mt_wifi 全目录编译报错 =====================
 # 1. 关闭「所有告警转为错误」（核心，告警不再导致编译失败）
 # EXTRA_CFLAGS += -Wno-error
-# 2. 屏蔽常见编译告警（覆盖你之前遇到的+其他潜在告警）
+# 2. 屏蔽常见编译告警
 EXTRA_CFLAGS += \
     -Wno-enum-conversion \          # 枚举类型转换告警
     -Wno-implicit-fallthrough \     # case穿透未声明告警
