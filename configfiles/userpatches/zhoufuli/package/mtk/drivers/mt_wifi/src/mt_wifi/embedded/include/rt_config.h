@@ -30,36 +30,14 @@
 #ifndef	__RT_CONFIG_H__
 #define	__RT_CONFIG_H__
 
+#ifdef LINUX
 #include <linux/types.h>
 #include <linux/skbuff.h>
 #include <linux/version.h>
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(6,6,0)
-/* 依赖的结构体定义 */
-struct iw_param {
-    __s32 value;
-    __u8 fixed;
-    __u8 disabled;
-};
-
-struct iw_point {
-    void __user *pointer;
-    __u16 length;
-    __u16 flags;
-};
-
-struct iw_event {
-    __u16 cmd;
-    __u16 len;
-    union {
-        __u32 value;
-        struct iw_param param;
-        struct iw_point point;
-        char data[0];
-    } u;
-};
-
 /* 核心函数补全 */
+#include <uapi/linux/wireless.h>
 static inline int iwe_stream_add_event(struct sk_buff *skb, u16 cmd, const void *data, size_t len)
 {
     struct iw_event *iwe;
@@ -89,6 +67,7 @@ static inline int iwe_stream_add_event_u16(struct sk_buff *skb, u16 cmd, u16 val
     return iwe_stream_add_event(skb, cmd, values, sizeof(values));
 }
 #endif /* LINUX_VERSION_CODE >= KERNEL_VERSION(6,6,0) */
+#endif /* LINUX */
 
 #include "rtmp_comm.h"
 

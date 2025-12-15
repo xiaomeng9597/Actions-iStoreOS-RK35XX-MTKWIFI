@@ -289,6 +289,7 @@ Hooks/Prepare/Post := FIXUP_NEW_MCU_FW_API
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C "$(LINUX_DIR)" \
 		$(KERNEL_MAKE_FLAGS) \
+		EXTRA_CFLAGS+="-I$(PKG_BUILD_DIR)/src/mt_wifi/embedded/include -I$(LINUX_DIR)/include -I$(LINUX_DIR)/include/linux/net" \
 		M="$(PKG_BUILD_DIR)/mt_wifi_ap" \
 		LINUX_DIR="$(KERNEL_BUILD_DIR)" \
 		$(foreach c, $(PKG_KCONFIG),$(if $(CONFIG_MTK_$c),CONFIG_$(c)=$(CONFIG_MTK_$(c)))) \
