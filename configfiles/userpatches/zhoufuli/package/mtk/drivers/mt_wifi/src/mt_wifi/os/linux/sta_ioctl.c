@@ -46,12 +46,7 @@ extern UINT32 DebugSubCategory[DBG_LVL_MAX + 1][32];
 
 #define GROUP_KEY_NO                4
 
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 6, 0)
-#include <linux/net/cfg80211.h>
-#define iwe_stream_add_event(info, ev, extra, extra_len, type)  cfg80211_iwe_stream_add_event(info, ev, extra, extra_len, type)
-#define iwe_stream_add_point(info, ev, extra, extra_len, p)    cfg80211_iwe_stream_add_point(info, ev, extra, extra_len, p)
-#define iwe_stream_add_value(info, ev, extra, extra_len, val, len)  cfg80211_iwe_stream_add_value(info, ev, extra, extra_len, val, len)
-#elif (KERNEL_VERSION(2, 6, 27) <= LINUX_VERSION_CODE)
+#if (KERNEL_VERSION(2, 6, 27) <= LINUX_VERSION_CODE)
 #define IWE_STREAM_ADD_EVENT(_A, _B, _C, _D, _E)		iwe_stream_add_event(_A, _B, _C, _D, _E)
 #define IWE_STREAM_ADD_POINT(_A, _B, _C, _D, _E)		iwe_stream_add_point(_A, _B, _C, _D, _E)
 #define IWE_STREAM_ADD_VALUE(_A, _B, _C, _D, _E, _F)	iwe_stream_add_value(_A, _B, _C, _D, _E, _F)
