@@ -31,7 +31,7 @@ define Package/wifi-profile
   SECTION:=MTK Properties
   CATEGORY:=MTK Properties
   SUBMENU:=Drivers
-  DEPENDS:=+wifi-dats +base-files
+  DEPENDS:=+wifi-dats
   TITLE:=MTK WiFi setup scripts
   VERSION:=$(PKG_RELEASE)
   MENU:=1
