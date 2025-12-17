@@ -1,4 +1,4 @@
-name: Build iStore OS MT_WIFI
+name: Build iStore OS MTKWIFI
 
 on:
   repository_dispatch:
@@ -17,7 +17,7 @@ env:
   FEEDS_CONF: feeds.conf
   CONFIG_FILE: .config
   DIY_P1_SH: diy-part1.sh
-  DIY_P2_SH: diy-part4-mt_wifi.sh
+  DIY_P2_SH: diy-part4-mtkwifi.sh
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
@@ -200,7 +200,7 @@ jobs:
       id: tag
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "release_tag=$(date +"%Y.%m.%d-%H.%M")-${{ matrix.ARCHITECTURE }}-mt_wifi" >> ${GITHUB_OUTPUT}
+        echo "release_tag=$(date +"%Y.%m.%d-%H.%M")-${{ matrix.ARCHITECTURE }}-mtkwifi" >> ${GITHUB_OUTPUT}
         touch release.txt
         echo "
         💻 架构: ${{ matrix.ARCHITECTURE }}
@@ -217,7 +217,7 @@ jobs:
 
         🔒 密码: password
 
-        📒 说明: 单网口设备默认网口为LAN，旁路由模式，需要接入主路由器后进后台查找对应IP地址访问，反之双网口设备默认网口为WAN+LAN，主路由模式，下面的镜像文件都是集成MT_WIFI闭源WiFi驱动的固件 " >> release.txt
+        📒 说明: 单网口设备默认网口为LAN，旁路由模式，需要接入主路由器后进后台查找对应IP地址访问，反之双网口设备默认网口为WAN+LAN，主路由模式，下面的镜像文件都是集成联发科闭源WiFi驱动的固件 " >> release.txt
         echo "status=success" >> ${GITHUB_OUTPUT}
 
     - name: 自动发布固件到 Releases
