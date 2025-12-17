@@ -90,6 +90,12 @@ chmod 755 package/base-files/files/etc/init.d/swconfig_install
 
 
 
+# 默认启用WiFi，系统开机后自动初始化无线功能
+rm -f package/base-files/files/sbin/wifi
+cp -f $GITHUB_WORKSPACE/configfiles/g68-mtkwifi package/base-files/files/etc/init.d/g68-mtkwifi
+chmod 755 package/base-files/files/etc/init.d/g68-mtkwifi
+
+
 
 # 删除会导致编译失败的补丁
 rm -f target/linux/generic/hack-5.10/747-1-rtl8367b-support-rtl8367s.patch
@@ -112,7 +118,6 @@ tar -xvf rtl8367b.tar.gz
 # rm -f target/linux/rockchip/rk35xx/base-files/lib/board/init.sh
 # cp -f $GITHUB_WORKSPACE/configfiles/init.sh target/linux/rockchip/rk35xx/base-files/lib/board/init.sh
 
-rm -f package/base-files/files/sbin/wifi
 rm -f target/linux/rockchip/rk35xx/base-files/etc/board.d/02_network
 cp -f $GITHUB_WORKSPACE/configfiles/02_network target/linux/rockchip/rk35xx/base-files/etc/board.d/02_network
 
