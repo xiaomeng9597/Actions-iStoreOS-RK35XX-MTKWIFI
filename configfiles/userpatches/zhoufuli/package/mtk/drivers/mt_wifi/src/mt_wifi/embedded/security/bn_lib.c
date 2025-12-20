@@ -955,33 +955,33 @@ void BN_consttime_swap(BN_ULONG condition, BIGNUM *a, BIGNUM *b, int nwords)
 		for (i = 10; i < nwords; i++)
 			BN_CONSTTIME_SWAP(i);
 
-	/* fall through */
+	/* Fallthrough */
 	case 10:
-		BN_CONSTTIME_SWAP(9);   /* fall through */
+		BN_CONSTTIME_SWAP(9);   /* Fallthrough */
 
 	case 9:
-		BN_CONSTTIME_SWAP(8);   /* fall through */
+		BN_CONSTTIME_SWAP(8);   /* Fallthrough */
 
 	case 8:
-		BN_CONSTTIME_SWAP(7);   /* fall through */
+		BN_CONSTTIME_SWAP(7);   /* Fallthrough */
 
 	case 7:
-		BN_CONSTTIME_SWAP(6);   /* fall through */
+		BN_CONSTTIME_SWAP(6);   /* Fallthrough */
 
 	case 6:
-		BN_CONSTTIME_SWAP(5);   /* fall through */
+		BN_CONSTTIME_SWAP(5);   /* Fallthrough */
 
 	case 5:
-		BN_CONSTTIME_SWAP(4);   /* fall through */
+		BN_CONSTTIME_SWAP(4);   /* Fallthrough */
 
 	case 4:
-		BN_CONSTTIME_SWAP(3);   /* fall through */
+		BN_CONSTTIME_SWAP(3);   /* Fallthrough */
 
 	case 3:
-		BN_CONSTTIME_SWAP(2);   /* fall through */
+		BN_CONSTTIME_SWAP(2);   /* Fallthrough */
 
 	case 2:
-		BN_CONSTTIME_SWAP(1);   /* fall through */
+		BN_CONSTTIME_SWAP(1);   /* Fallthrough */
 
 	case 1:
 		BN_CONSTTIME_SWAP(0);
